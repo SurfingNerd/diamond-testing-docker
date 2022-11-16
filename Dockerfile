@@ -8,7 +8,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 RUN cd /home/node
 RUN git clone https://github.com/Kotsin/hbbft-posdao-contracts.git --single-branch --branch i-144-health-values
 RUN git clone https://github.com/surfingnerd/honey-badger-testing.git --single-branch --branch performance-tests
-RUN git clone https://github.com/surfingnerd/openethereum-3.x.git --single-branch --branch https://github.com/surfingnerd/openethereum-3.x/tree/i26-random-value-in-header-and-system-call
+RUN git clone https://github.com/surfingnerd/openethereum-3.x.git --single-branch --branch i26-random-value-in-header-and-system-call
 # building
 RUN cd hbbft-posdao-contracts && npm ci && npm run compile && cd ..
 RUN cd openethereum-3.x && cargo build --release && cd ..
