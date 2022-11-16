@@ -9,7 +9,7 @@ RUN cd /home/node
 
 # contracts
 RUN git clone https://github.com/Kotsin/hbbft-posdao-contracts.git --single-branch --branch i-144-health-values
-RUN cd hbbft-posdao-contracts && npm ci && npm run compile && cd ..
+RUN cd hbbft-posdao-contracts && npm ci && npm run compile && mkdir -p build/contracts && find artifacts/**/*.sol/*json -type f -exec cp '{}' build/contracts ';' && cd ..
 
 # open ethereum
 RUN git clone https://github.com/surfingnerd/openethereum-3.x.git --single-branch --branch i26-random-value-in-header-and-system-call openethereum
