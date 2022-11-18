@@ -15,6 +15,6 @@ RUN cd /root && git clone https://github.com/surfingnerd/openethereum-3.x.git --
 RUN cd /root/openethereum-3.x &&  RUSTFLAGS='-C target-cpu=native' && cargo build --release && cd ..
 # honey badger testing
 # RUN cd openethereum-3.x &&  RUSTFLAGS='-C target-cpu=native' && cargo build --release && cd ..
-RUN git clone https://github.com/surfingnerd/honey-badger-testing.git --single-branch --branch performance-tests
+RUN cd /root && git clone https://github.com/surfingnerd/honey-badger-testing.git --single-branch --branch performance-tests
 RUN cd honey-badger-testing && npm ci && npm run build-open-ethereum && npm run testnet-fresh
 # honey badger testing
