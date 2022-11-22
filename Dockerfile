@@ -8,7 +8,7 @@ RUN cd /root/hbbft-posdao-contracts && npm ci && npm run compile && mkdir -p bui
 
 # open ethereum
 RUN cd /root && git clone https://github.com/surfingnerd/openethereum-3.x.git --single-branch --branch i26-random-value-in-header-and-system-call openethereum
-RUN cd /root/openethereum && . "$HOME/.cargo/env" &&  RUSTFLAGS='-C target-cpu=native' && cargo build --release && cd ..
+RUN cd /root/openethereum && . "$HOME/.cargo/env" &&  rustup default 1.64 && RUSTFLAGS='-C target-cpu=native' && cargo build --release && cd ..
 # honey badger testing
 # RUN cd openethereum-3.x &&  RUSTFLAGS='-C target-cpu=native' && cargo build --release && cd ..
 RUN cd /root && git clone https://github.com/surfingnerd/honey-badger-testing.git --single-branch --branch performance-tests
