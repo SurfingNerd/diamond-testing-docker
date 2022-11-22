@@ -1,10 +1,6 @@
 FROM node:lts-buster
 
-RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get install apt-utils git-core curl net-tools zsh -y
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-RUN . "$HOME/.cargo/env"
+RUN apt-get update && apt-get upgrade -y && apt-get install apt-utils git-core curl net-tools zsh -y
 
 # contracts
 RUN cd /root && git clone https://github.com/Kotsin/hbbft-posdao-contracts.git --single-branch --branch i-144-health-values
