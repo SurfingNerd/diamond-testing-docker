@@ -17,5 +17,5 @@ RUN cd /root/dmd && git clone https://github.com/surfingnerd/honey-badger-testin
 RUN cd /root/dmd/hbbft-posdao-contracts && mkdir -p build/contracts && find artifacts/contracts -name "*.json" -exec cp '{}' /root/dmd/hbbft-posdao-contracts/build/contracts/ ';'
 RUN rm /root/dmd/hbbft-posdao-contracts/build/contracts/*.dbg.json
 RUN cd /root/dmd/honey-badger-testing && . "$HOME/.cargo/env" &&  npm ci && npm run build-open-ethereum
-RUN cd /root/dmd/honey-badger-testing && npm run testnet-fresh
+RUN cd /root/dmd/honey-badger-testing && . "$HOME/.cargo/env" && npm run testnet-fresh
 # honey badger testing
