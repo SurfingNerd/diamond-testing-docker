@@ -14,5 +14,7 @@ RUN cd /root/openethereum && . "$HOME/.cargo/env" &&  rustup default 1.64 && RUS
 # RUN cd openethereum-3.x &&  RUSTFLAGS='-C target-cpu=native' && cargo build --release && cd ..
 RUN cd /root && git clone https://github.com/surfingnerd/honey-badger-testing.git --single-branch --branch performance-tests
 RUN cd /root/hbbft-posdao-contracts && mkdir -p build/contracts && find artifacts/contracts -name "*.json" -exec cp '{}' /root/hbbft-posdao-contracts/build/contracts/ ';'
-RUN cd /root/honey-badger-testing && . "$HOME/.cargo/env" &&  npm ci && npm run build-open-ethereum && npm run testnet-fresh
+RUN rm /root/hbbft-posdao-contracts/build/contracts/*.dbg.json
+RUN cd /root/honey-badger-testing && . "$HOME/.cargo/env" &&  npm ci && npm run build-open-ethereum
+RUN cd /root/honey-badger-testing && npm run testnet-fresh
 # honey badger testing
