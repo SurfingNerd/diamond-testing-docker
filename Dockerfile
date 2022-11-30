@@ -1,4 +1,5 @@
-FROM node:lts-buster
+FROM node:16.18.1-buster
+
 
 RUN apt-get update && apt-get upgrade -y && apt-get install apt-utils git-core curl cmake net-tools zsh -y
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -10,7 +11,7 @@ RUN cd /root/dmd/network && git clone https://github.com/Kotsin/hbbft-posdao-con
 RUN cd /root/dmd/network/hbbft-posdao-contracts && npm ci && npm run compile && mkdir -p build/contracts && find artifacts/**/*.sol/*json -type f -exec cp '{}' build/contracts ';' && cd ..
 
 # open ethereum
-RUN cd /root/dmd/network && git clone https://github.com/surfingnerd/openethereum-3.x.git --single-branch --branch i26-random-value-in-header-and-system-call openethereum
+RUN cd /root/dmd/network && git clone https://github.com/surfingnerd/openethereum-3.x.git --single-branch --branch i120_hardhat_and_solidity8upgrade openethereum
 RUN cd /root/dmd/network/openethereum && . "$HOME/.cargo/env" &&  rustup default 1.64 && RUSTFLAGS='-C target-cpu=native' && cargo build --release && cd ..
 
 # honey badger testing
@@ -21,3 +22,5 @@ RUN rm /root/dmd/network/hbbft-posdao-contracts/build/contracts/*.dbg.json
 RUN cd /root/dmd/network/honey-badger-testing && . "$HOME/.cargo/env" &&  npm ci && npm run build-open-ethereum
 RUN cd /root/dmd/network/honey-badger-testing && . "$HOME/.cargo/env" && npm run testnet-fresh
 # honey badger testing
+
+
