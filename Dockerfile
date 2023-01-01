@@ -11,7 +11,7 @@ RUN cd /root/dmd/network && git clone https://github.com/Kotsin/hbbft-posdao-con
 RUN cd /root/dmd/network/hbbft-posdao-contracts && npm ci && npm run compile && mkdir -p build/contracts && find artifacts/**/*.sol/*json -type f -exec cp '{}' build/contracts ';' && cd ..
 
 # open ethereum
-RUN cd /root/dmd/network && git clone https://github.com/surfingnerd/openethereum-3.x.git --single-branch --branch i120_hardhat_and_solidity8upgrade openethereum
+RUN cd /root/dmd/network && git clone https://github.com/surfingnerd/openethereum-3.x.git --single-branch --branch i120_hardhat_aand_solidity8upgrade_take2 openethereum
 RUN cd /root/dmd/network/openethereum && . "$HOME/.cargo/env" &&  rustup default 1.64 && RUSTFLAGS='-C target-cpu=native' && cargo build --release && cd ..
 
 # honey badger testing
